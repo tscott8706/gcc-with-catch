@@ -1,0 +1,27 @@
+version: "2"
+services:
+    build:
+        image: gcc:7.1.0
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: build
+        command: 'bash -c "cd /proj && make"'
+
+    clean:
+        image: gcc:7.1.0
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: clean
+        command: 'bash -c "cd /proj && make clean"'
+
+    run:
+        image: gcc:7.1.0
+        network_mode: bridge
+        volumes:
+            - .:/proj
+        container_name: run
+        command: '/proj/out'
+
+
